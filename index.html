@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Жасанды нейрондық желілер және ЖИ этикасы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f3;--ink:#13233a;--mut:#4d5b6e;--acc:#0e8a8c;--acc2:#d98a1f;--card:#e5ebe7;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1b2b;--ink:#eaf0ee;--mut:#a4b2c0;--acc:#3cc3c5;--acc2:#f0b04d;--card:#1a2b40}}
+:root[data-theme="dark"]{--bg:#0f1b2b;--ink:#eaf0ee;--mut:#a4b2c0;--acc:#3cc3c5;--acc2:#f0b04d;--card:#1a2b40}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.s{display:flex;height:100%;box-sizing:border-box;padding:clamp(20px,5vw,72px) clamp(20px,7vw,110px) 70px;overflow-y:auto;max-width:1100px;margin:0 auto;flex-direction:column;justify-content:center}
+.js .s{display:none}
+.js .s.on{display:flex}
+.js body{overflow:hidden}
+h1{font-size:clamp(30px,6vw,64px);line-height:1.1;font-weight:800;margin:0 0 18px}
+h2{font-size:clamp(24px,4vw,42px);line-height:1.15;font-weight:800;margin:0 0 22px;border-left:6px solid var(--acc);padding-left:16px}
+h3{font-size:clamp(16px,2vw,21px);margin:0 0 6px;color:var(--acc)}
+p,li{font-size:clamp(15px,2vw,22px);line-height:1.5;color:var(--ink);max-width:70ch}
+p{margin:0 0 12px}
+ul{margin:0;padding-left:1.1em}li{margin-bottom:10px}
+li::marker{color:var(--acc2)}
+.sub{color:var(--mut);font-size:clamp(16px,2.4vw,26px)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.two>div{background:var(--card);border-radius:10px;padding:14px 18px}
+.two p{font-size:clamp(14px,1.8vw,19px);margin:0}
+.f{font-size:clamp(17px,3vw,32px);font-weight:800;color:var(--acc);background:var(--card);padding:14px 18px;border-radius:10px;display:inline-block;margin:0 0 16px;overflow-x:auto;max-width:100%}
+nav{display:none;position:fixed;left:0;right:0;bottom:env(safe-area-inset-bottom,0px);display:flex;align-items:center;justify-content:center;gap:18px;padding:12px;background:var(--bg)}
+.js nav{display:flex}
+nav button{font:inherit;font-weight:600;border:2px solid var(--acc);background:none;color:var(--ink);border-radius:8px;padding:8px 18px;cursor:pointer}
+nav button:focus-visible{outline:3px solid var(--acc2)}
+#n{color:var(--mut);min-width:60px;text-align:center;font-size:15px}
+.v{display:block;width:100%;max-width:620px;max-height:32vh;margin:0 0 14px}
+.v text{fill:var(--ink);font:700 15px Manrope,system-ui,sans-serif;text-anchor:middle}
+.v .l{stroke:var(--mut);stroke-width:1.2;fill:none;opacity:.45}
+.v .a{stroke:var(--acc);stroke-width:3;fill:none;stroke-linecap:round}
+.v .n{fill:var(--card);stroke:var(--acc);stroke-width:2.5}
+.v .g{fill:var(--card);stroke:var(--mut);stroke-width:1}
+.flow{stroke-dasharray:7 7;animation:fl 1s linear infinite}
+@keyframes fl{to{stroke-dashoffset:-14}}
+.pulse{animation:pu 2.4s ease-in-out infinite}
+@keyframes pu{0%,100%{fill:var(--card)}40%{fill:var(--acc2)}}
+.att{animation:op 2.4s ease-in-out infinite}
+@keyframes op{50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.flow,.pulse,.att{animation:none}}
+</style>
+</head>
+<body>
+
+<section class="s on">
+<h1>Жасанды нейрондық желілердің жұмыс принципі және архитектурасы</h1>
+<p class="sub">Жасанды интеллекттің этикалық және құқықтық аспектілері</p>
+</section>
+
+<section class="s">
+<h2>Жоспар</h2>
+<ul>
+<li>Нейрондық желі дегеніміз не және ол қалай жұмыс істейді</li>
+<li>Оқыту: шығын функциясы, кері таралу, градиенттік түсу</li>
+<li>Негізгі архитектуралар: MLP, CNN, RNN, Transformer</li>
+<li>Этика: біржақтылық, құпиялылық, мөлдірлік, жауапкершілік</li>
+<li>Құқықтық реттеу және қорытынды</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Нейрондық желі деген не?</h2>
+<ul>
+<li>Деректерден заңдылықты үйренетін математикалық модель</li>
+<li>Көптеген қарапайым есептеу бірліктерінен (нейрондардан) тұрады</li>
+<li>Ережені қолмен жазбайды: модель мысалдар арқылы үйренеді</li>
+<li>Машиналық оқытудың бір бөлімі, ал терең оқыту көп қабатты желілерді қолданады</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Биологиялық және жасанды нейрон</h2>
+<div class="two">
+<div><h3>Биологиялық</h3><p>Дендрит сигнал қабылдайды, жасуша денесі оны өңдейді, аксон әрі қарай жібереді.</p></div>
+<div><h3>Жасанды</h3><p>Кірістер салмақпен көбейтіледі, қосылады, активация функциясынан өтіп, шығыс береді.</p></div>
+</div>
+<p style="margin-top:16px" class="sub">Ұқсастық шартты: жасанды нейрон мидың нақты көшірмесі емес.</p>
+</section>
+
+<section class="s">
+<h2>Бір нейронның есебі</h2>
+<svg class="v" viewBox="0 0 600 200" role="img" aria-label="Нейрон схемасы">
+<path class="a flow" d="M78 40L278 98M78 100H278M78 160L278 102"/>
+<g class="n"><circle cx="60" cy="40" r="18"/><circle cx="60" cy="100" r="18"/><circle cx="60" cy="160" r="18"/><circle cx="310" cy="100" r="32"/><rect x="400" y="76" width="56" height="48" rx="8"/><circle cx="550" cy="100" r="18"/></g>
+<path class="a flow" d="M342 100H398M456 100H530"/>
+<text x="60" y="45">x₁</text><text x="60" y="105">x₂</text><text x="60" y="165">x₃</text>
+<text x="160" y="52">w₁</text><text x="160" y="90">w₂</text><text x="160" y="150">w₃</text>
+<text x="310" y="106">Σ + b</text><text x="428" y="106">f</text><text x="550" y="106">y</text></svg>
+<div class="f">y = f(w₁x₁ + w₂x₂ + … + wₙxₙ + b)</div>
+<ul>
+<li>x — кіріс мәндері, w — салмақтар (үйрену кезінде өзгереді)</li>
+<li>b — ығысу (bias), кіріс нөл болғанда да нәтижені реттейді</li>
+<li>f — активация функциясы, желіге бейсызықтық қасиет береді</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Активация функциялары</h2>
+<svg class="v" viewBox="0 0 560 150" role="img" aria-label="Sigmoid және ReLU графиктері">
+<path class="l" d="M20 120H240M130 20V130M300 120H520M390 20V130"/>
+<path class="a" d="M20 118C90 118 100 110 130 75S170 30 240 30"/>
+<path class="a" d="M300 120H390L480 30"/>
+<text x="130" y="147">Sigmoid</text><text x="390" y="147">ReLU</text></svg>
+<div class="two">
+<div><h3>Sigmoid</h3><p>Мәнді 0 мен 1 аралығына келтіреді. Ықтималдық шығару үшін ыңғайлы.</p></div>
+<div><h3>Tanh</h3><p>Мәні −1 мен 1 аралығында, нөлге центрленген.</p></div>
+<div><h3>ReLU</h3><p>max(0, x). Қарапайым және жылдам, жасырын қабаттарда жиі қолданылады.</p></div>
+<div><h3>Softmax</h3><p>Шығыс қабатта класс ықтималдықтарының қосындысын 1-ге теңейді.</p></div>
+</div>
+</section>
+
+<section class="s">
+<h2>Желінің қабаттары</h2>
+<svg class="v" id="net" viewBox="0 0 600 230" role="img" aria-label="Көпқабатты желі"><line x1="70" y1="60" x2="223" y2="35" class="l flow"></line><line x1="70" y1="60" x2="223" y2="85" class="l flow"></line><line x1="70" y1="60" x2="223" y2="135" class="l flow"></line><line x1="70" y1="60" x2="223" y2="185" class="l flow"></line><line x1="70" y1="110" x2="223" y2="35" class="l flow"></line><line x1="70" y1="110" x2="223" y2="85" class="l flow"></line><line x1="70" y1="110" x2="223" y2="135" class="l flow"></line><line x1="70" y1="110" x2="223" y2="185" class="l flow"></line><line x1="70" y1="160" x2="223" y2="35" class="l flow"></line><line x1="70" y1="160" x2="223" y2="85" class="l flow"></line><line x1="70" y1="160" x2="223" y2="135" class="l flow"></line><line x1="70" y1="160" x2="223" y2="185" class="l flow"></line><line x1="223" y1="35" x2="376" y2="35" class="l flow"></line><line x1="223" y1="35" x2="376" y2="85" class="l flow"></line><line x1="223" y1="35" x2="376" y2="135" class="l flow"></line><line x1="223" y1="35" x2="376" y2="185" class="l flow"></line><line x1="223" y1="85" x2="376" y2="35" class="l flow"></line><line x1="223" y1="85" x2="376" y2="85" class="l flow"></line><line x1="223" y1="85" x2="376" y2="135" class="l flow"></line><line x1="223" y1="85" x2="376" y2="185" class="l flow"></line><line x1="223" y1="135" x2="376" y2="35" class="l flow"></line><line x1="223" y1="135" x2="376" y2="85" class="l flow"></line><line x1="223" y1="135" x2="376" y2="135" class="l flow"></line><line x1="223" y1="135" x2="376" y2="185" class="l flow"></line><line x1="223" y1="185" x2="376" y2="35" class="l flow"></line><line x1="223" y1="185" x2="376" y2="85" class="l flow"></line><line x1="223" y1="185" x2="376" y2="135" class="l flow"></line><line x1="223" y1="185" x2="376" y2="185" class="l flow"></line><line x1="376" y1="35" x2="529" y2="85" class="l flow"></line><line x1="376" y1="35" x2="529" y2="135" class="l flow"></line><line x1="376" y1="85" x2="529" y2="85" class="l flow"></line><line x1="376" y1="85" x2="529" y2="135" class="l flow"></line><line x1="376" y1="135" x2="529" y2="85" class="l flow"></line><line x1="376" y1="135" x2="529" y2="135" class="l flow"></line><line x1="376" y1="185" x2="529" y2="85" class="l flow"></line><line x1="376" y1="185" x2="529" y2="135" class="l flow"></line><circle cx="70" cy="60" r="14" class="n pulse" style="animation-delay: 0s;"></circle><circle cx="70" cy="110" r="14" class="n pulse" style="animation-delay: 0s;"></circle><circle cx="70" cy="160" r="14" class="n pulse" style="animation-delay: 0s;"></circle><text x="70" y="222">Кіріс</text><circle cx="223" cy="35" r="14" class="n pulse" style="animation-delay: 0.5s;"></circle><circle cx="223" cy="85" r="14" class="n pulse" style="animation-delay: 0.5s;"></circle><circle cx="223" cy="135" r="14" class="n pulse" style="animation-delay: 0.5s;"></circle><circle cx="223" cy="185" r="14" class="n pulse" style="animation-delay: 0.5s;"></circle><text x="223" y="222">Жасырын</text><circle cx="376" cy="35" r="14" class="n pulse" style="animation-delay: 1s;"></circle><circle cx="376" cy="85" r="14" class="n pulse" style="animation-delay: 1s;"></circle><circle cx="376" cy="135" r="14" class="n pulse" style="animation-delay: 1s;"></circle><circle cx="376" cy="185" r="14" class="n pulse" style="animation-delay: 1s;"></circle><text x="376" y="222">Жасырын</text><circle cx="529" cy="85" r="14" class="n pulse" style="animation-delay: 1.5s;"></circle><circle cx="529" cy="135" r="14" class="n pulse" style="animation-delay: 1.5s;"></circle><text x="529" y="222">Шығыс</text></svg>
+<ul>
+<li><b>Кіріс қабаты:</b> деректі қабылдайды (сурет пиксельдері, мәтін токендері, сандар)</li>
+<li><b>Жасырын қабаттар:</b> белгілерді біртіндеп күрделі деңгейге көтереді</li>
+<li><b>Шығыс қабаты:</b> нәтиже береді (класс, сан, келесі сөз)</li>
+<li>Қабат саны көп болса, желі «терең» деп аталады</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Тура өту және шығын функциясы</h2>
+<ul>
+<li>Тура өту: кіріс деректер қабаттар арқылы өтіп, болжам шығарады</li>
+<li>Шығын функциясы болжам мен дұрыс жауаптың айырмасын санмен өлшейді</li>
+<li>Регрессияда жиі MSE, классификацияда кросс-энтропия қолданылады</li>
+<li>Мақсат: шығынды барынша азайту</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Кері таралу және градиенттік түсу</h2>
+<svg class="v" viewBox="0 0 400 170" role="img" aria-label="Градиенттік түсу">
+<path class="a" d="M20 20Q200 200 380 20"/>
+<circle r="10" fill="var(--acc2)"><animateMotion dur="3s" repeatCount="indefinite" calcMode="spline" keyTimes="0;1" keySplines=".45 0 .55 1" path="M20 20Q110 110 200 110"/></circle>
+<text x="200" y="150">шығынның минимумы</text></svg>
+<ul>
+<li>Кері таралу (backpropagation): қатенің әр салмаққа әсері шығыстан кіріске қарай есептеледі</li>
+<li>Градиент шығынның қай бағытта өсетінін көрсетеді</li>
+<li>Градиенттік түсу салмақтарды қарама-қарсы бағытта аздап өзгертеді</li>
+<li>Қадам өлшемі — оқыту жылдамдығы (learning rate). Оптимизаторлар: SGD, Adam</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Оқыту процесі</h2>
+<ul>
+<li>Деректер үшке бөлінеді: оқыту, валидация, тест</li>
+<li>Эпоха — бүкіл оқыту жиынын бір рет толық өту</li>
+<li>Артық үйрену (overfitting): модель мысалдарды жаттап алады, жаңа деректе нашар жұмыс істейді</li>
+<li>Қарсы шаралар: көбірек дерек, dropout, регуляризация, ерте тоқтату</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>MLP және CNN</h2>
+<svg class="v" id="cnn" viewBox="0 0 400 214" role="img" aria-label="Конволюциялық сүзгі"><rect x="20" y="10" width="28" height="28" class="g"></rect><rect x="48" y="10" width="28" height="28" class="g"></rect><rect x="76" y="10" width="28" height="28" class="g"></rect><rect x="104" y="10" width="28" height="28" class="g"></rect><rect x="132" y="10" width="28" height="28" class="g"></rect><rect x="160" y="10" width="28" height="28" class="g"></rect><rect x="20" y="38" width="28" height="28" class="g"></rect><rect x="48" y="38" width="28" height="28" class="g"></rect><rect x="76" y="38" width="28" height="28" class="g"></rect><rect x="104" y="38" width="28" height="28" class="g"></rect><rect x="132" y="38" width="28" height="28" class="g"></rect><rect x="160" y="38" width="28" height="28" class="g"></rect><rect x="20" y="66" width="28" height="28" class="g"></rect><rect x="48" y="66" width="28" height="28" class="g"></rect><rect x="76" y="66" width="28" height="28" class="g"></rect><rect x="104" y="66" width="28" height="28" class="g"></rect><rect x="132" y="66" width="28" height="28" class="g"></rect><rect x="160" y="66" width="28" height="28" class="g"></rect><rect x="20" y="94" width="28" height="28" class="g"></rect><rect x="48" y="94" width="28" height="28" class="g"></rect><rect x="76" y="94" width="28" height="28" class="g"></rect><rect x="104" y="94" width="28" height="28" class="g"></rect><rect x="132" y="94" width="28" height="28" class="g"></rect><rect x="160" y="94" width="28" height="28" class="g"></rect><rect x="20" y="122" width="28" height="28" class="g"></rect><rect x="48" y="122" width="28" height="28" class="g"></rect><rect x="76" y="122" width="28" height="28" class="g"></rect><rect x="104" y="122" width="28" height="28" class="g"></rect><rect x="132" y="122" width="28" height="28" class="g"></rect><rect x="160" y="122" width="28" height="28" class="g"></rect><rect x="20" y="150" width="28" height="28" class="g"></rect><rect x="48" y="150" width="28" height="28" class="g"></rect><rect x="76" y="150" width="28" height="28" class="g"></rect><rect x="104" y="150" width="28" height="28" class="g"></rect><rect x="132" y="150" width="28" height="28" class="g"></rect><rect x="160" y="150" width="28" height="28" class="g"></rect><rect x="260" y="38" width="28" height="28" class="g"></rect><rect x="288" y="38" width="28" height="28" class="g"></rect><rect x="316" y="38" width="28" height="28" class="g"></rect><rect x="344" y="38" width="28" height="28" class="g"></rect><rect x="260" y="66" width="28" height="28" class="g"></rect><rect x="288" y="66" width="28" height="28" class="g"></rect><rect x="316" y="66" width="28" height="28" class="g"></rect><rect x="344" y="66" width="28" height="28" class="g"></rect><rect x="260" y="94" width="28" height="28" class="g"></rect><rect x="288" y="94" width="28" height="28" class="g"></rect><rect x="316" y="94" width="28" height="28" class="g"></rect><rect x="344" y="94" width="28" height="28" class="g"></rect><rect x="260" y="122" width="28" height="28" class="g"></rect><rect x="288" y="122" width="28" height="28" class="g"></rect><rect x="316" y="122" width="28" height="28" class="g"></rect><rect x="344" y="122" width="28" height="28" class="g"></rect><rect x="20" y="10" width="84" height="84" fill="none" stroke="var(--acc2)" stroke-width="4"><animateTransform attributeName="transform" type="translate" calcMode="discrete" dur="6s" repeatCount="indefinite" values="0 0;28 0;56 0;84 0;84 28;56 28;28 28;0 28"></animateTransform></rect><text x="104" y="204">Сурет</text><text x="316" y="204">Белгілер картасы</text><text x="225" y="108">→</text></svg>
+<div class="two">
+<div><h3>MLP (толық байланысты желі)</h3><p>Барлық нейрондар келесі қабаттың барлық нейронымен байланысады. Кестелік деректерге жарайды.</p></div>
+<div><h3>CNN (конволюциялық желі)</h3><p>Кішкентай сүзгілер суреттен жиек, форма, объект белгілерін іздейді. Кескінді тану, медицина, бейне талдау.</p></div>
+</div>
+</section>
+
+<section class="s">
+<h2>RNN және LSTM</h2>
+<ul>
+<li>Тізбекті деректерге арналған: мәтін, сөйлеу, уақыт қатарлары</li>
+<li>RNN алдыңғы қадамның күйін келесі қадамға береді, яғни «жады» бар</li>
+<li>Ұзын тізбекте ерте ақпарат жоғалады (градиент өшуі)</li>
+<li>LSTM және GRU ақпаратты сақтау мен ұмытуды қақпалармен басқарады</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Transformer архитектурасы</h2>
+<svg class="v" viewBox="0 0 520 150" role="img" aria-label="Attention механизмі">
+<g class="a att"><path d="M330 108Q195 10 60 108" stroke-width="4"/><path d="M330 108Q260 40 190 108" stroke-width="5"/><path d="M330 108Q395 60 460 108" stroke-width="2"/></g>
+<text x="60" y="132">Ол</text><text x="190" y="132">кітапты</text><text x="330" y="132">оқып</text><text x="460" y="132">жатыр</text></svg>
+<ul>
+<li>2017 жылы «Attention Is All You Need» мақаласында ұсынылды</li>
+<li>Негізгі идея — зейін (attention): әр токен басқа токендердің қайсысы маңызды екенін өзі анықтайды</li>
+<li>Тізбекті параллель өңдейді, сондықтан үлкен деректе жылдам оқытылады</li>
+<li>Қазіргі үлкен тіл модельдерінің негізі</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Генеративті модельдер</h2>
+<div class="two">
+<div><h3>Тіл модельдері (LLM)</h3><p>Алдыңғы мәтін бойынша келесі токенді болжап, мәтін жазады.</p></div>
+<div><h3>GAN</h3><p>Екі желі бәсекеледі: генератор жасайды, дискриминатор жалғандығын анықтайды.</p></div>
+<div><h3>Диффузиялық модельдер</h3><p>Шудан бастап суретті біртіндеп қалпына келтіреді.</p></div>
+</div>
+</section>
+
+<section class="s">
+<h2>ЖИ этикасының негізгі принциптері</h2>
+<ul>
+<li>Адамға зиян келтірмеу және адам игілігіне қызмет ету</li>
+<li>Әділдік: топтарға қатысты кемсітушіліксіз шешім</li>
+<li>Мөлдірлік және түсіндірмелілік</li>
+<li>Есеп беру: шешім үшін нақты адам немесе ұйым жауап береді</li>
+<li>Адам бақылауы, әсіресе маңызды шешімдерде</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Біржақтылық және әділдік</h2>
+<ul>
+<li>Модель оқыту деректеріндегі қателіктер мен қоғамдағы теңсіздікті қайталауы мүмкін</li>
+<li>Мысал: жұмысқа қабылдау, несие бағалау, бет тану жүйелерінде топтар арасындағы дәлдік айырмасы</li>
+<li>Себептері: өкілдік етпейтін деректер, қате белгілеу, дұрыс емес мақсат функциясы</li>
+<li>Шешім: деректерді аудару, әр топ бойынша сынау, адамның тексеруі</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Құпиялылық және мөлдірлік</h2>
+<div class="two">
+<div><h3>Құпиялылық</h3><p>Модельдер дербес деректермен оқытылуы мүмкін. Келісім, деректерді азайту, анонимдеу қажет.</p></div>
+<div><h3>Мөлдірлік</h3><p>Терең желілер «қара жәшік» сияқты. Түсіндірілетін ЖИ (XAI) шешімнің себебін көрсетуге тырысады.</p></div>
+<div><h3>Дипфейк пен жалған ақпарат</h3><p>Синтетикалық контентті белгілеу және тексеру маңызды.</p></div>
+</div>
+</section>
+
+<section class="s">
+<h2>Авторлық құқық және жауапкершілік</h2>
+<ul>
+<li>Модельді қорғалған туындылармен оқытуға болатыны әлі даулы мәселе, әр елде әртүрлі шешіледі</li>
+<li>ЖИ жасаған нәтиженің авторы кім деген сұрақ: көп жүйеде адам-автор талап етіледі</li>
+<li>ЖИ қате шешім қабылдаса, жауапкершілік әзірлеушіге, енгізушіге немесе пайдаланушыға жүктелуі мүмкін</li>
+</ul>
+</section>
+
+<section class="s">
+<h2>Құқықтық реттеу</h2>
+<div class="two">
+<div><h3>Еуропалық Одақ</h3><p>AI Act (2024): тәуекелге негізделген тәсіл. Қауіпті жүйелерге қатаң талап, кейбір тәжірибеге тыйым.</p></div>
+<div><h3>Дербес деректер</h3><p>GDPR (ЕО) және Қазақстанның «Дербес деректер және оларды қорғау туралы» Заңы деректерді өңдеуді реттейді.</p></div>
+<div><h3>Қазақстан</h3><p>ЖИ саласының заңнамасы дамып келеді. Ағымдағы нормаларды ресми дереккөзден тексеру керек.</p></div>
+</div>
+</section>
+
+<section class="s">
+<h2>Қорытынды</h2>
+<ul>
+<li>Нейрондық желі салмақтарды деректер арқылы түзетіп үйренетін көпқабатты модель</li>
+<li>Архитектура міндетке байланысты таңдалады: CNN — сурет, RNN — тізбек, Transformer — мәтін</li>
+<li>Технологиялық қуат этикалық және құқықтық жауапкершілікпен қатар жүруі керек</li>
+<li>Дереккөздер: Goodfellow «Deep Learning», Vaswani et al. (2017), EU AI Act, ЮНЕСКО ЖИ этикасы бойынша ұсыным</li>
+</ul>
+<p class="sub">Назарларыңызға рахмет!</p>
+</section>
+
+<nav>
+<button id="p" aria-label="Алдыңғы">Артқа</button><span id="n"></span><button id="x" aria-label="Келесі">Алға</button>
+</nav>
+
+<script>
+document.documentElement.className+=" js";
+var S=document.querySelectorAll('.s'),i=0,n=document.getElementById('n');
+function go(k){i=Math.max(0,Math.min(S.length-1,k));S.forEach(function(s,j){s.classList.toggle('on',j===i)});n.textContent=(i+1)+' / '+S.length;S[i].scrollTop=0;try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+document.getElementById('p').onclick=function(){go(i-1)};
+document.getElementById('x').onclick=function(){go(i+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(i-1)}});
+var sx=null;document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>60)go(d<0?i+1:i-1);sx=null},{passive:true});
+
+var NS='http://www.w3.org/2000/svg';
+function E(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+(function(){document.getElementById('net').innerHTML='';document.getElementById('cnn').innerHTML='';var v=document.getElementById('net'),L=[3,4,4,2],nm=['Кіріс','Жасырын','Жасырын','Шығыс'],P=[];
+L.forEach(function(c,l){P[l]=[];for(var j=0;j<c;j++)P[l].push([70+l*153,110+(j-(c-1)/2)*50])});
+for(var l=0;l<L.length-1;l++)P[l].forEach(function(a){P[l+1].forEach(function(b){E('line',{x1:a[0],y1:a[1],x2:b[0],y2:b[1],'class':'l flow'},v)})});
+P.forEach(function(ly,l){ly.forEach(function(q){var c=E('circle',{cx:q[0],cy:q[1],r:14,'class':'n pulse'},v);c.style.animationDelay=(l*0.5)+'s'});var t=E('text',{x:ly[0][0],y:222},v);t.textContent=nm[l]});
+var c=document.getElementById('cnn');
+for(var r=0;r<6;r++)for(var k=0;k<6;k++)E('rect',{x:20+k*28,y:10+r*28,width:28,height:28,'class':'g'},c);
+for(r=0;r<4;r++)for(k=0;k<4;k++)E('rect',{x:260+k*28,y:38+r*28,width:28,height:28,'class':'g'},c);
+var w=E('rect',{x:20,y:10,width:84,height:84,fill:'none',stroke:'var(--acc2)','stroke-width':4},c);
+E('animateTransform',{attributeName:'transform',type:'translate',calcMode:'discrete',dur:'6s',repeatCount:'indefinite',values:'0 0;28 0;56 0;84 0;84 28;56 28;28 28;0 28'},w);
+[['Сурет',104,204],['Сүзгі 3×3',104,10],['Белгілер картасы',316,204]].forEach(function(a){if(a[0]!='Сүзгі 3×3'){var t=E('text',{x:a[1],y:a[2]},c);t.textContent=a[0]}});
+var ar=E('text',{x:225,y:108},c);ar.textContent='→';
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)document.querySelectorAll('animate,animateMotion,animateTransform').forEach(function(e){e.remove()});
+})();
+var h=parseInt((location.hash||'').slice(1),10);go(h?h-1:0);
+</script>
+</body>
+</html>
